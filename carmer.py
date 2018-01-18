@@ -7,8 +7,6 @@
 # # Imports
 
 # In[1]:
-
-
 import numpy as np
 import os
 import six.moves.urllib as urllib
@@ -21,7 +19,8 @@ from collections import defaultdict
 from io import StringIO
 from matplotlib import pyplot as plt
 from PIL import Image
-
+from PIL import ImageGrab
+#from grabscreen import grab_screen
 import cv2
 
 cap=cv2.VideoCapture(0)
@@ -78,8 +77,8 @@ NUM_CLASSES = 90
 # In[5]:
 
 print("start to download...")
-opener = urllib.request.URLopener()
-opener.retrieve(DOWNLOAD_BASE + MODEL_FILE, MODEL_FILE)
+#opener = urllib.request.URLopener()
+#opener.retrieve(DOWNLOAD_BASE + MODEL_FILE, MODEL_FILE)
 tar_file = tarfile.open(MODEL_FILE)
 print("serch graph.pb...")
 for file in tar_file.getmembers():
@@ -156,7 +155,12 @@ with detection_graph.as_default():
     num_detections = detection_graph.get_tensor_by_name('num_detections:0')
     while True:
       
-      ret,image_np = cap.read()
+      #ret,image_np = cap.read()# read from camera
+
+      #read from screen shoot
+      screen =  np.array(ImageGrab.grab(bbox=(50,250,900,1200)))
+      image_np = cv2.cvtColor(screen, cv2.COLOR_BGR2RGB)
+      
       # Expand dimensions since the model expects images to have shape: [1, None, None, 3]
       image_np_expanded = np.expand_dims(image_np, axis=0)
       # Actual detection.
@@ -164,7 +168,6 @@ with detection_graph.as_default():
           [detection_boxes, detection_scores, detection_classes, num_detections],
           feed_dict={image_tensor: image_np_expanded})
       # Visualization of the results of a detection.
-      print (num)
       vis_util.visualize_boxes_and_labels_on_image_array(
           image_np,
           np.squeeze(boxes),
