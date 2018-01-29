@@ -10,3 +10,4 @@ computer vision needs, and we hope that you will as well.
   <img src="g3doc/img/kites_detections_output.jpg" width=676 height=450>
 </p>
 
+![screenshoot](https://github.com/YanZiQinKevin/object_detection/blob/master/object%20detection_screenshot_16.01.2018.png)
