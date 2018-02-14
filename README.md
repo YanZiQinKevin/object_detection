@@ -6,8 +6,6 @@ The TensorFlow Object Detection API is an open source framework built on top of
 TensorFlow that makes it easy to construct, train and deploy object detection
 models.  At Google we’ve certainly found this codebase to be useful for our
 computer vision needs, and we hope that you will as well.
-<p align="center">
-  <img src="g3doc/img/kites_detections_output.jpg" width=676 height=450>
-</p>
+
 
 ![screenshoot](https://github.com/YanZiQinKevin/object_detection/blob/master/object%20detection_screenshot_16.01.2018.png)
