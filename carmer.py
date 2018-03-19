@@ -23,7 +23,8 @@ from PIL import ImageGrab
 #from grabscreen import grab_screen
 import cv2
 
-cap=cv2.VideoCapture(0)
+#open carmer
+#cap=cv2.VideoCapture(0)
 
 
 # ## Env setup
@@ -144,6 +145,7 @@ IMAGE_SIZE = (12, 8)
 
 with detection_graph.as_default():
   with tf.Session(graph=detection_graph) as sess:
+    
     # Definite input and output Tensors for detection_graph
     image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
     # Each box represents a part of the image where a particular object was detected.
